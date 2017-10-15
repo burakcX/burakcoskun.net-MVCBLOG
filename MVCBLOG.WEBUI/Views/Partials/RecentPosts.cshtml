@@ -1,0 +1,9 @@
+﻿@using MVCBLOG.ENTITY.Model_DTO
+@model List<MVCBLOG.ENTITY.Model_DTO.PostDTO>
+
+@foreach (PostDTO item in Model)
+{
+    <ul class="list-unstyled">
+        <li><a href="/Post/Index/@item.PostDtoId">@item.TitleDto</a></li>
+    </ul>
+}

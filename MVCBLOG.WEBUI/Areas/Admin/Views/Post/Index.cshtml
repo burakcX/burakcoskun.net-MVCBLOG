@@ -1,0 +1,52 @@
+﻿@model List<MVCBLOG.ENTITY.Model_DTO.PostDTO>  
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Makaleler</h2>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="form-group">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        @*<th style="text-align:center">ID</th>*@
+                        <th style="text-align: center">Başlık</th>
+                        <th style="text-align: center">Yazar</th>
+                        <th style="text-align: center">Kategoriler</th>
+                        <th style="text-align: center">Etiketler</th>
+                        <th style="text-align: center">Tarih</th>
+                        <th style="text-align:center">Düzenle</th>
+                        <th style="text-align:center">Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @*<td>@item.ID</td>*@
+                            <td>@item.TitleDto</td>
+                            <td>@item.UserDTO.NameDTO @item.UserDTO.SurnameDTO</td>
+                            <td>@item.CategoryDTO.NameCategoryDto</td>
+                            <td></td>
+                            <td>@item.CreatedDateDto</td>
+                            <td style="text-align:center">
+                                <a href="/Admin/BlogPost/UpdateBlogPost/@item.PostDtoId" class="btn btn-success">
+                                    <i class="fa fa-fw fa-pencil-square-o"></i> 
+                                </a>
+                            </td>
+                            <td style="text-align:center">
+                                <a href="#" class="btn btn-danger" onclick="Delete(@item.PostDtoId)">
+                                    <i class="fa fa-fw fa-trash-o "></i> 
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

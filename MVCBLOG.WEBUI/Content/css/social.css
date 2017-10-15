@@ -1,0 +1,51 @@
+﻿.container {
+    padding-top: 30px;
+    border: thin solid #ddd;
+    min-height: 90px;
+}
+.socialbox {
+	max-width: 318px;
+	margin: 0 auto;
+}
+.socialbox li {
+	position: relative;
+	font-size: 19px;
+	height: 32px;
+	width: 32px;
+	text-align: center;
+	line-height: 30px;
+	background: #f2f2f2;
+	border: 1px solid #ddd;
+	border-radius: 2px 7px 2px 7px;
+	box-shadow: 0 1px 1px #bbb;
+	cursor: pointer;
+	margin-left: 8px;
+	z-index: 20;
+}
+.socialbox li:first-child {
+	margin-left: 0;
+}
+.socialbox li span {
+	z-index: 10;
+	font-size: 93.8%;
+	position: absolute;
+	left: -13px;
+	color: rgba(202, 202, 202, .85);
+    -webkit-transform: rotate(-45deg); /* Chrome, Safari, Opera */
+        -ms-transform: rotate(-45deg); /* IE 9 */
+            transform: rotate(-45deg);
+ 	-webkit-transition: -webkit-transform .8s ease-in-out;
+    transition:                 transform .8s ease-in-out;
+	cursor: pointer;
+}
+.socialbox span.fb {
+	left: -23px;
+}
+.socialbox span:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+
+
+/* Have a Wonderful Time - any help with the z-index would be appreciated larry@tradesouthwest.com */

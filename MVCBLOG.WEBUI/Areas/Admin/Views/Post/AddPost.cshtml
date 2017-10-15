@@ -1,0 +1,41 @@
+﻿@model MVCBLOG.ENTITY.Model_DTO.PostDTO
+@using System.ComponentModel.DataAnnotations;
+<script src="~/Areas/Admin/Content/js/ckeditor/ckeditor.js"></script>
+
+@{
+    ViewBag.Title = "AddPost";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Makale Ekle</h2>
+
+<div class="row">
+    <div class="col-lg-6">
+        @*@Html.Partial("~/Areas/Admin/Views/Shared/Partial/FormMessagesPart.cshtml")*@
+
+        <div class="form-group">
+            <label>Başlık</label>
+            @Html.TextBoxFor(x => x.TitleDto, new { @class = "form-control", @placeholder = "Makale başlığını giriniz." })
+            @Html.ValidationMessageFor(x => x.TitleDto)
+        </div>
+        <div class="form-group">
+            <label>Kategori</label>
+            @*@Html.DropDownList("Ogrenciler", null, "Seçiniz..", new { @class = "form-control" })*@
+            @*@Html.DropDownListFor(x => x.CategoryIdDTO, Model.drpCategories, "Seçiniz", new { @class = "form-control" })*@
+        </div>
+        <div class="form-group">
+            <label>Açıklama</label>
+            @Html.TextAreaFor(x => x.ContentDto, new { @class = "ckeditor" })
+            @*<textarea class="ckeditor" name="Content"></textarea>*@
+            @*@Html.ValidationMessageFor(x => x.Description)*@
+        </div>
+        @*<div class="form-group">
+            <label>Dosya Seç</label>
+            <input type="file">
+        </div>*@
+
+        <button type="submit" class="btn btn-primary active">Makale Ekle</button>
+    </div>
+</div>
+
+

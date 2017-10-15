@@ -1,0 +1,105 @@
+﻿<!-- Side Widget Well -->
+@*<div>
+        <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+        <script type="IN/MemberProfile" data-id="https://www.linkedin.com/in/burak-co%25C5%259Fkun-5a597220" data-format="inline" data-related="false">
+        </script>
+    </div>
+    <br />*@
+<style>
+
+    .panel-heading span {
+        margin-top: -20px;
+        font-size: 15px;
+    }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .pull-right {
+        float: right !important;
+    }
+
+    li a {
+        color: #525353;
+
+    }
+</style>
+
+<script>
+    function CollapsePanel() {
+        $(document).on('click', '.panel-heading span.clickable', function(e) {
+            var $this = $(this);
+            if (!$this.hasClass('panel-collapsed')) {
+                $this.parents('.panel').find('.panel-body').slideUp();
+                $this.addClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+            } else {
+                $this.parents('.panel').find('.panel-body').slideDown();
+                $this.removeClass('panel-collapsed');
+                $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+            }
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    CollapsePanel();
+</script>
+
+<div class="card hovercard" style="border-style: solid; border-width: 1px; border-radius: 3px; border-color: #cacaca !important; ">
+    <div class="cardheader">
+
+    </div>
+    <div class="avatar">
+        <img alt="" src="~/Content/images/ProfilFoto.jpg" height="200">
+    </div>
+    <br>
+    <div class="info" style="margin-bottom: 10px;">
+        <div class="title">
+            <a target="_blank" href="http://www.burakcoskun.net">Burak Coşkun</a>
+        </div>
+        <div class="desc"><b>Software Developer</b></div>
+        <a class="btn btn-social-icon btn-github" style="width: 30px; height: 30px;"><span class="fa fa-github"></span></a>&nbsp;&nbsp;
+        <a class="btn btn-social-icon btn-linkedin" style="width: 30px; height: 30px;"><span class="fa fa-linkedin"></span></a>&nbsp;&nbsp;
+        @*<a class="btn btn-social-icon btn-facebook" style="width: 30px; height: 30px;"><span class="fa fa-facebook"></span></a>&nbsp;&nbsp;*@
+        <a class="btn btn-social-icon btn-twitter" style="width: 30px; height: 30px;"><span class="fa fa-twitter"></span></a>
+    </div>
+</div>
+<br />
+
+<div class="panel panel-primary" style="border-color: #cacaca !important;">
+    <div class="panel-heading" style="border-color: #5F4586 !important; background-color: #5F4586 !important;">
+        <b><h3 class="panel-title">Kategoriler</h3></b>
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+    </div>
+
+    <div class="menu-category list-group panel-body" id="category">
+        @Html.Action("AllCategories", "Partials")
+
+    </div>
+</div>
+
+<div class="panel panel-primary" style="border-color: #cacaca !important;">
+    <div class="panel-heading" style="border-color: #5F4586 !important; background-color: #5F4586 !important;">
+        <b><h3 class="panel-title">Yeni Makaleler</h3></b>
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+    </div>
+
+    <div class="menu-category list-group panel-body" id="RecentPost">
+        @Html.Action("RecentPosts", "Partials")
+
+    </div>
+</div>
+
+<div class="panel panel-primary" style="border-color: #cacaca !important;">
+    <div class="panel-heading" style="border-color: #5F4586 !important; background-color: #5F4586 !important;">
+        <b><h3 class="panel-title">En Çok Okunanlar</h3></b>
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+    </div>
+
+    <div class="menu-category list-group panel-body" id=Postbyhits>
+        @*@Html.Action("RecentPosts", "Partials")*@
+
+    </div>
+</div>

@@ -1,0 +1,130 @@
+﻿@using System.Web.UI.WebControls
+@model MVCBLOG.ENTITY.Model_Object.RegisterViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="~/Content/images/fav_bc.png" type="image/x-icon" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Kayıt Formu</title>
+    <!-- Bootstrap core CSS-->
+    <link href="~/Areas/Admin/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="~/Areas/Admin/Content/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="~/Areas/Admin/Content/css/sb-admin.min.css" rel="stylesheet">
+    <style>
+        .validation-summary-errors {
+            color: red;
+        }
+
+        body {
+            margin: 0;
+            background-image: url('../../Content/images/loginbg.jpg');
+            /*background: #000;*/
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container" style="margin-top: 150px;">
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header text-center"><h5><b>Kayıt Formu</b></h5></div>
+            <div class="card-body">
+                @using (Html.BeginForm("Register", "Home"))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+
+                    <div class="form-group">
+                        <b><label for="username" class="cols-sm-2 control-label">Adı</label></b>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Adı" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <b><label for="username" class="cols-sm-2 control-label">Soyadı</label></b>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(model => model.Surname, new { @class = "form-control", placeholder = "Soyadı" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <b><label for="username" class="cols-sm-2 control-label">Kullanıcı Adı</label></b>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "Kullanıcı Adı" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <b><label for="username" class="cols-sm-2 control-label">E-posta Adresi</label></b>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                @Html.TextBoxFor(model => model.EMail, new { @class = "form-control", placeholder = "E-posta Adresi" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <b><label for="username" class="cols-sm-2 control-label">Şifre</label></b>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa" aria-hidden="true"></i></span>
+                                @Html.PasswordFor(model => model.RePassword, new { @class = "form-control", placeholder = "Şifre" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <b><label for="username" class="cols-sm-2 control-label">Şifre Tekrar</label></b>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock fa" aria-hidden="true"></i></span>
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Şifre Tekrar" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btn-login" href="#" class="btn btn-primary btn-block">Kayıt Ol</button>
+
+                    <div class="text-center">
+                        <a class="d-block small mt-3" href="/Home/Login/">Oturum aç</a>
+                    </div>
+                }
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Areas/Admin/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/popper/popper.min.js"></script>
+    <script src="~/Areas/Admin/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+</body>
+</html>
+

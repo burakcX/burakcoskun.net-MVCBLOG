@@ -1,0 +1,32 @@
+﻿@model MVCBLOG.ENTITY.Model_DTO.CategoryDTO
+@using System.ComponentModel.DataAnnotations;
+
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kategori Güncelle</h2>
+<br />
+
+@using (Html.BeginForm())
+{
+
+    <div class="row">
+        <div class="col-lg-6">
+
+            <div class="form-group">
+                <b><label>Kategori Adı</label></b>
+                @Html.TextBoxFor(x => x.NameCategoryDto, new {@class = "form-control", @placeholder = "Kategori adı giriniz."})
+                @Html.ValidationMessageFor(x => x.NameCategoryDto)
+            </div>
+            <div class="form-group">
+                <b><label>Kategori Açıklaması</label></b>
+                @Html.TextAreaFor(x => x.DescriptionCategoryDto, new {@class = "form-control", @placeholder = "Açıklama giriniz."})
+                @Html.ValidationMessageFor(x => x.DescriptionCategoryDto)
+            </div>
+            <button type="submit" class="btn btn-success active">Güncelle</button>
+        </div>
+    </div>
+
+}

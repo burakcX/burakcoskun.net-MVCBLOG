@@ -1,0 +1,82 @@
+﻿@using MVCBLOG.ENTITY.Model_DTO
+@model List<MVCBLOG.ENTITY.Model_DTO.PostDTO>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .categoryTitle h2 {
+        border: dot-dash;
+        background-color: rgb(61, 62, 64);
+        color: #ffffff;
+        border-radius: 10px;
+        padding: 10px;
+        text-shadow: 2px 2px #000000;
+    }
+
+    .titleFontSize {
+        font-size: 25px;
+    }
+
+    .articleFontSize {
+        font-size: 13px;
+    }
+
+    .panel-heading {
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+
+    .baslik-panel:hover {
+        background-color: #fef1e2;
+        border-color: #fbeed5;
+    }
+
+    
+</style>
+<div class="categoryTitle">
+    <h2>
+        @ViewBag.CategoryName Kategorisi Makaleleri
+    </h2>
+</div>
+
+<br />
+@foreach (PostDTO item in Model)
+{
+    <div class="panel panel-default" style="background-color:#ffffff">
+        <div class="panel-heading baslik-panel">
+            <h2 style="color: #b94a48;" class="titleFontSize">
+                @item.TitleDto
+            </h2>
+            <p style="font-size: 13px;">
+                <span class="glyphicon glyphicon-user"></span> @item.UserDTO.NameDTO @item.UserDTO.SurnameDTO &nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-calendar"></span> @item.CreatedDateDto.ToString("dd.MM.yyyy")  &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-eye-open leftDistance"></span> 28  &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-comment leftDistance"></span> 0  &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-th-list leftDistance"></span> @item.CategoryDTO.NameCategoryDto  &nbsp;&nbsp;&nbsp;&nbsp;
+            </p>
+        </div>
+        <div class="panel-body">
+            <article class="post" id="postArticle">
+                <section class="post-body text articleFontSize">
+                    @if (!string.IsNullOrEmpty(item.ContentDto) && item.ContentDto.Length > 400)
+                    {
+                        @Html.Raw(@item.ContentDto.Substring(0, 400) + "...")
+                    }
+                    else
+                    {
+                        @Html.Raw(@item.ContentDto)
+                    }
+
+                    <br /><br />
+                    <a class="btn btn-primary" style="font-size: 13px;" href="#">Devamını Oku.. <span class="glyphicon glyphicon-chevron-right"></span></a>
+                </section>
+            </article>
+        </div>
+    </div>
+
+}

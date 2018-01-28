@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
@@ -69,8 +77,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model_DTO\AuthorityDTO.cs" />
-    <Compile Include="Model_DTO\UserAuthorityDTO.cs" />
+    <Compile Include="Model_DTO\ContactDTO.cs" />
+    <Compile Include="Model_DTO\FileDTO.cs" />
+    <Compile Include="Model_DTO\RoleDTO.cs" />
+    <Compile Include="Model_DTO\UserRoleDTO.cs" />
     <Compile Include="Model_DTO\UserDTO.cs" />
     <Compile Include="Model_DTO\BaseDTO.cs" />
     <Compile Include="Model_DTO\CategoryDTO.cs" />
@@ -78,7 +88,9 @@
     <Compile Include="Model_DTO\LikeDTO.cs" />
     <Compile Include="Model_DTO\TagDTO.cs" />
     <Compile Include="Model_DTO\PostDTO.cs" />
-    <Compile Include="Model_Entity\Authority.cs" />
+    <Compile Include="Model_Entity\Contact.cs" />
+    <Compile Include="Model_Entity\File.cs" />
+    <Compile Include="Model_Entity\Role.cs" />
     <Compile Include="Model_Entity\Base.cs" />
     <Compile Include="Model_Entity\Category.cs" />
     <Compile Include="Model_Entity\Like.cs" />
@@ -86,12 +98,14 @@
     <Compile Include="Model_Entity\Post.cs" />
     <Compile Include="Model_Entity\User.cs" />
     <Compile Include="Model_Entity\Comment.cs" />
-    <Compile Include="Model_Entity\UserAuthority.cs" />
+    <Compile Include="Model_Entity\UserRole.cs" />
     <Compile Include="Model_Object\LoginViewModel.cs" />
+    <Compile Include="Model_Object\PostViewModel.cs" />
     <Compile Include="Model_Object\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

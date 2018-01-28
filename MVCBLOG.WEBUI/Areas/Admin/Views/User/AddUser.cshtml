@@ -1,0 +1,136 @@
+﻿@using System.Net.Mime
+@using System.Web.UI.WebControls
+@model MVCBLOG.ENTITY.Model_DTO.UserDTO
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kullanıcı Ekleme Sayfası</h2>
+<hr />
+
+@using (Html.BeginForm("AddUser", "User"))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 ">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <h5>Kullanıcı Bilgileri</h5>
+                        <hr/>
+
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="txtName">Ad:</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    @Html.TextBoxFor(x => x.NameDTO, new { @class = "form-control", @id = "txtUserName", @Type = "text", @name = "txtUserName", @placeholder = "Adınızı giriniz." })
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="txtSurname">Soyad:</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+
+                                    @Html.TextBoxFor(x => x.SurnameDTO, new { @class = "form-control", @id = "txtUserName", @Type = "text", @name = "txtUserName", @placeholder = "Soyadınızı giriniz." })
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="txtEPosta">E-Posta Adresi:</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </div>
+                                    @Html.TextBoxFor(x => x.EMailDTO, new { @class = "form-control", @id = "txtEPosta", @Type = "text", @name = "txtEPosta", @placeholder = "E-Posta adresini giriniz." })
+                                </div>
+
+                            </div>
+                        </div>
+
+                       
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="txtUserName">Kullanıcı Adı:</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    @Html.TextBoxFor(x => x.UserNameDTO, new { @class = "form-control", @id = "txtUserName", @Type = "text", @name = "txtUserName", @placeholder = "Kullanıcı adınızı giriniz." })
+                                </div>
+
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="txtSifre1">Şifre:</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-lock fa"></i>
+                                    </div>
+                                    @Html.TextBoxFor(x => x.PasswordDTO, new { @class = "form-control", @id = "txtSifre1", @Type = "text", @name = "txtSifre1", @placeholder = "Şifrenizi giriniz." })
+                                </div>
+
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="txtSifre2">Şifre(Tekrar):</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-lock fa"></i>
+                                    </div>
+                                    @Html.TextBoxFor(x => x.RePasswordDTO, new { @class = "form-control", @id = "txtSifre2", @Type = "text", @name = "txtSifre2", @placeholder = "Şifrenizi tekrar giriniz." })
+                                </div>
+
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label class="control-label" for="chkIsActive">Aktif Mi:</label>
+                                @Html.CheckBoxFor(x => x.IsActiveDto, new { @id = "chkIsActive", @name = "chkIsActive" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <input type="submit" name="btnKaydet" class="btn btn-success" value="Kullanıcı Kaydet" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-md-2 hidden-xs">
+                <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail ">
+                
+                <div class="form-group">
+                    <br />
+                    <div class="col-md-6">
+                        <input id="Upload photo" name="Upload photo" class="input-file" type="file">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

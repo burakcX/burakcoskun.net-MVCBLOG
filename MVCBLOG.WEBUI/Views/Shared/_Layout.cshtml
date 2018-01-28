@@ -1,42 +1,126 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="~/Content/images/fav_bc.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title style="color:white;">Burak Coşkun'un Web Günlüğü</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Custom CSS -->
-    <link href="~/Content/css/blog-home.css" rel="stylesheet">
-    <link href="~/Content/css/Highlight/hybrid.css" rel="stylesheet" />
-    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link rel="alternate" href="http://www.burakcoskun.net" hreflang="tr">
+    <title style="color: white;">Burak Coşkun'un Web Günlüğü</title>
+    <meta name="description" content="Burak Coşkun'un Web Günlüğü'nde C#, Asp.Net, Asp.Net MVC, Mssql, Mysql, Fluent NHibernate, Devexpress, Linq Lambda vb konu başlıklarında makaleler yazılmaktadır.">
+    <meta name="keywords" content="C#, Vb.Net, Asp.Net, Asp.Net MVC, Mssql, Mysql, Fluent NHibernate, Devexpress, Linq Lambda">
+    <meta name="author" content="Burak Coşkun">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="classification" content="Programlama Yazılım">
+    <meta name="rating" content="General">
+    <meta name="resource-type" content="document">
+    <meta name="robots" content="All">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    @Styles.Render("~/bundles/css/genel")
+    @*<link href="~/Content/css/prism.css" rel="stylesheet" />*@
+
+    @Scripts.Render("~/bundles/js/genel")
+    @Scripts.Render("~/bundles/js/ajaxvalidation")
+
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link href="~/Content/css/bootstrap-social.css" rel="stylesheet" />
-    <link href="~/Content/css/profilecard.css" rel="stylesheet" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Content/js/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Content/js/Highlight/highlight.pack.js"></script>
-    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    @*<script src="~/Content/js/prism.js"></script>*@
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11898328-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-11898328-1');
+    </script>
+
+
+    @* Back to top JS *@
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('#scroll').fadeIn();
+                } else {
+                    $('#scroll').fadeOut();
+                }
+            });
+            $('#scroll').click(function() {
+                $("html, body").animate({ scrollTop: 0 }, 600);
+                return false;
+            });
+        });
+    </script>
 
     <script>
+        $(document).ready(function () {
+            $("#aranankelime").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "@Url.Action("SearchPost")",
+                        type: "POST",
+                        dataType: "json",
+                        data: { deger: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.TitleDto, value: item.TitleDto };
+                            }));
+                        }
+                    });
+                },
+                messages: {
+                    sonuc: "",
+                    sonuc: ""
+                }
+            });
+        })
+    </script>
+
+    @* Arama kısmı enter a basıldığında arama işlemi *@
+    <script>
+        $(document).ready(function () {
+            $("#aranankelime").keypress(function (e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+                    search();
+                }
+            });
+        });
+
+        function search() {
+            var value = $("#aranankelime").val().trim();
+            dynamicColor();
+            if (isEmpty(value))
+                return;
+
+            var searchUrl = '/urlburayayazilacak!!!/' + encodeURIComponent(value);
+            window.location.href = searchUrl;
+        }
+
+        $(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+
+            $("#opener").on("click", function () {
+                $("#dialog").dialog("open");
+            });
+        });
+
         function CollapsePanel() {
             $(document).on('click', '.panel-heading span.clickable', function (e) {
                 var $this = $(this);
@@ -52,45 +136,24 @@
             });
         }
 
-        $(document).ready(function () {
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 50) {
-                    $('#back-to-top').fadeIn();
-                } else {
-                    $('#back-to-top').fadeOut();
-                }
-            });
-            // scroll body to 0px on click
-            $('#back-to-top').click(function () {
-                $('#back-to-top').tooltip('hide');
-                $('body,html').animate({
-                    scrollTop: 0
-                }, 800);
-                return false;
-            });
-
-            $('#back-to-top').tooltip('show');
-
-        });
-
     </script>
 
     <style>
-        /*i {
-            font-size: 20px;
-            color: #ffffff !important;
-            background-color: #337ab7;
-            padding: 5px;
-            margin-bottom: 5px;
+        .categoryTitle h2 {
+            border: dot-dash;
+            background-color: rgb(61, 62, 64);
+            color: #ffffff;
             border-radius: 10px;
-        }*/
+            padding: 10px;
+            text-shadow: 2px 2px #000000;
+        }
 
-        .back-to-top {
-            cursor: pointer;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: none;
+        .titleFontSize {
+            font-size: 25px;
+        }
+
+        .articleFontSize {
+            font-size: 13px;
         }
 
         .panel-heading {
@@ -100,61 +163,103 @@
             border-top-left-radius: 3px;
         }
 
-        .bcoskun-panel:hover {
-            color: #c09853;
-            background-color: #fcf8e3;
+        .baslik-panel:hover {
+            background-color: #fef1e2;
             border-color: #fbeed5;
         }
 
-        .btn-primary,
-        .btn-primary:hover,
-        .btn-primary:active,
-        .btn-primary:visited,
-        .btn-primary:focus {
-            box-shadow: 1px 1px 5px #888888;
-            background-color: #664391;
-            border-color: #664391;
+        #scroll {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            text-indent: -9999px;
+            display: none;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+            #scroll span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -8px;
+                margin-top: -12px;
+                height: 0;
+                width: 0;
+                border: 8px solid transparent;
+                border-bottom-color: #ffffff;
+            }
+
+            #scroll:hover {
+                background-color: #e74c3c;
+                opacity: 1;
+                filter: "alpha(opacity=100)";
+                -ms-filter: "alpha(opacity=100)";
+            }
+
+        #aranankelime {
+            height: 40px;
+        }
+
+        .titleFontSize {
+            font-size: 25px;
+        }
+
+        .articleFontSize {
+            font-size: 13px;
+        }
+
+        .panel-heading {
+            padding: 10px 15px;
+            border-bottom: 1px solid transparent;
+            border-top-right-radius: 3px;
+            border-top-left-radius: 3px;
+        }
+
+        .panel-default {
+            border-color: #cacaca;
         }
     </style>
 
+    <script type="text/javascript">
+        CollapsePanel();
+    </script>
+
+    @* Accordion Jquery *@
+    <script>
+        $(function () {
+            $("#accordion").accordion({
+                heightStyle: "content",
+                active: false,
+                collapsible:true
+
+            });
+        });
+    </script>
+
 </head>
+
 <body>
-    <!-- Navigation -->
+    <img class="img-responsive" src="~/Content/images/ustmenubg.jpg" />
     @Html.Partial("~/Views/Shared/Partials/MenuPartial.cshtml")
-
-
-    <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <!-- Blog Entries Column -->
             <div class="col-md-9">
                 @RenderBody()
-
             </div>
-            <!-- Blog Sidebar Widgets Column -->
             <aside class="col-md-3">
-                <!-- Side Widget Well -->
                 @Html.Partial("~/Views/Shared/Partials/SideBarPartial.cshtml")
-
-
             </aside>
         </div>
-        <!-- /.row -->
-        <!-- Footer -->
-        <a id="back-to-top" href="#" class="btn btn-danger btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
     </div>
-    <footer>
-        <div class="row">
-            <hr />
-            <p class="text-center">Copyright &copy; @DateTime.Now.Year - Burak Coşkun</p>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-    </footer>
-    <!-- /.container -->
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    @Html.Partial("~/Views/Shared/Partials/FooterPartial.cshtml")
+
+    <!-- BackToTop Button -->
+    <a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
 </body>
 </html>

@@ -12,6 +12,7 @@ namespace MVCBLOG.ENTITY.Model_DTO
         #region Fields
         public int CategoryDtoId { get; set; }
         public string NameCategoryDto { get; set; }
+        public string SeoCategoryDTO { get; set; }
         public string DescriptionCategoryDto { get; set; }
 
         #endregion

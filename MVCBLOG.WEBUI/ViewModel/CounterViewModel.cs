@@ -9,7 +9,7 @@ namespace MVCBLOG.WEBUI.ViewModel
     {
         public string KategoriAdi { get; set; }
         public int KategoridekiPostSayisi { get; set; }
-
+        public string KategoriSeoLink { get; set; }
         public int CatId { get; set; }
         public string CatDesc { get; set; }
     }

@@ -31,5 +31,7 @@ namespace MVCBLOG.ENTITY.Model_Object
         Compare("Password", ErrorMessage = "Girmiş olduğunuz şifreler eşleşmemektedir.")]
         public string RePassword { get; set; }
 
+        public bool isActive { get; set; }
+
     }
 }

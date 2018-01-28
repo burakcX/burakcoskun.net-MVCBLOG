@@ -1,0 +1,85 @@
+﻿@using MVCBLOG.WEBUI.Models
+
+
+@if (ViewBag.islemDurum == "1")
+{
+    <div class="alert alert-success">
+        <strong>Başarılı!</strong> <b>@FormMessages.AddPostSuccess</b>
+    </div>
+}
+else if (ViewBag.islemDurum == "2")
+{
+    <div class="alert alert-danger">
+        <strong>Hata!</strong> <b>@FormMessages.AddPostError</b>
+    </div>
+}
+
+else if (ViewBag.islemDurum == "3")
+{
+    <div class="alert alert-success">
+        <strong>Başarılı!</strong> <b>@FormMessages.UpdatePostSuccess</b>
+    </div>
+}
+
+else if (ViewBag.islemDurum == "4")
+{
+    <div class="alert alert-danger">
+        <strong>Hata!</strong> <b>@FormMessages.UpdatePostError</b>
+    </div>
+}
+
+else if (ViewBag.islemDurum == "5")
+{
+    <div class="alert alert-success">
+        <strong>Başarılı!</strong> <b>@FormMessages.AddCategorySuccess</b>
+    </div>
+}
+else if (ViewBag.islemDurum == "6")
+{
+    <div class="alert alert-danger">
+        <strong>Hata!</strong> <b>@FormMessages.AddCategoryError</b>
+    </div>
+}
+
+else if (ViewBag.islemDurum == "7")
+{
+    <div class="alert alert-success">
+        <strong>Başarılı!</strong> <b>@FormMessages.UpdateCategorySuccess</b>
+    </div>
+}
+
+else if (ViewBag.islemDurum == "8")
+{
+    <div class="alert alert-danger">
+        <strong>Hata!</strong> <b>@FormMessages.UpdateCategoryError</b>
+    </div>
+}
+
+else if (ViewBag.islemDurum == "9")
+{
+    <div class="alert alert-success">
+        <strong>Başarılı!</strong> <b>@FormMessages.DeletePostSuccess</b>
+    </div>
+}
+
+else if (ViewBag.islemDurum == "10")
+{
+    <div class="alert alert-success">
+        <strong>Başarılı!</strong> <b>@FormMessages.DeleteCategorySuccess</b>
+    </div>
+}
+
+else if (ViewBag.islemDurum == "11")
+{
+    <div class="alert alert-success">
+        <strong>Başarılı!</strong> <b>@FormMessages.AddContactSuccess</b>
+    </div>
+}
+
+else if (ViewBag.islemDurum == "12")
+{
+    <div class="alert alert-danger">
+        <strong>Hata!</strong> <b>@FormMessages.AddContactError</b>
+    </div>
+}
+

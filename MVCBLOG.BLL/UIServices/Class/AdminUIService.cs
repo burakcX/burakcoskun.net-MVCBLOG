@@ -85,8 +85,11 @@ namespace MVCBLOG.BLL.UIServices.Class
 
             UserDTO UserDto = new UserDTO()
             {
+                IdDTO = UserEntity.Id,
                 NameDTO = UserEntity.Name,
-                SurnameDTO = UserEntity.Surname
+                SurnameDTO = UserEntity.Surname,
+                UserNameDTO = UserEntity.UserName
+                
             };
 
             return UserDto;

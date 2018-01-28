@@ -1,91 +1,40 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="~/Content/images/fav_bc.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Burak Coşkun'un Sanal Kütüphanesi</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Custom CSS -->
-    <link href="~/Content/css/blog-home.css" rel="stylesheet">
-    <link href="~/Content/css/Highlight/default.css" rel="stylesheet" />
-    <link href="~/Content/css/Highlight/hybrid.css" rel="stylesheet" />    
-    <link href="~/Content/css/Highlight/dark.css" rel="stylesheet" />    
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="~/Content/js/bootstrap.min.js"></script>
-    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>    
-    <script src="~/Content/js/Highlight/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
+    <title style="color: white;">Burak Coşkun'un Web Günlüğü</title>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            @Html.Partial("~/Views/Shared/Partials/MenuPartial.cshtml")
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <!-- Page Content -->
+    @Styles.Render("~/bundles/css/genel")
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body>
+    <img class="img-responsive" src="~/Content/images/ustmenubg.png" />
+    @Html.Partial("~/Views/Shared/Partials/MenuPartial.cshtml")
     <div class="container">
         <div class="row">
-            <!-- Blog Post Content Column -->
-            @RenderBody()
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-                <!-- Blog Search Well -->
-                <div class="well">
-                    <h4>Site İçi Arama</h4>
-                    <div class="input-group">
-                        <input type="text" placeholder="Aranacak kelimeyi giriniz.." class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </span>
-                    </div>
-                    <!-- /.input-group -->
-                </div>
-                <!-- Side Widget Well -->
-               @Html.Partial("~/Views/Shared/Partials/SideBarPartial.cshtml")
+            <div class="col-md-9">
+                @RenderBody()
             </div>
-            <!-- /.row -->
+            <aside class="col-md-3">
+                @Html.Partial("~/Views/Shared/Partials/SideBarPartial.cshtml")
+            </aside>
         </div>
-        <!-- Side Widget Well -->
-        <div class="well">
-            <h4>Side Widget Well</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-        </div>
-
-        <!-- /.row -->
-        <hr>
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website @DateTime.Now.Year</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </footer>
     </div>
-    <!-- /.container -->
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    @Html.Partial("~/Views/Shared/Partials/FooterPartial.cshtml")
+    @Scripts.Render("~/bundles/js/genel")
+    <script>
+ $(document).ready(function () {
+     $('pre code').each(function (i, block) {
+         hljs.highlightBlock(block);
+     });
+ });</script>
 </body>
 </html>
 

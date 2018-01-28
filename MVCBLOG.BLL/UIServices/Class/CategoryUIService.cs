@@ -39,12 +39,13 @@ namespace MVCBLOG.BLL.UIServices.Class
                 {
                     CategoryDtoId = item.Id,
                     CreatedUserNameDto = item.CreatedUserName,
-                    CreatedDateDto = item.CreatedDate,
+                    CreatedDateDto = item.CreatedDate.Value,
                     ModifiedUserNameDto = item.ModifiedUserName,
-                    ModifiedDateDto = item.ModifiedDate,
+                    ModifiedDateDto = item.ModifiedDate.Value,
                     NameCategoryDto = item.Name,
+                    SeoCategoryDTO = item.SeoCategory,
                     DescriptionCategoryDto = item.Description,
-                    PostDtoList = item.Posts.Select(postEntity => new PostDTO
+                    PostDtoList = item.PostList.Select(postEntity => new PostDTO
                     {
                         PostDtoId = postEntity.Id,
 
@@ -55,7 +56,7 @@ namespace MVCBLOG.BLL.UIServices.Class
             return CategoryDtoList;
         }
 
-        //TODO: BU KISIMA DEVAM EDİLECEK..
+        //TODO: NOT..
 
         public CategoryDTO IdIleGetir(int Id)
         {
@@ -65,11 +66,22 @@ namespace MVCBLOG.BLL.UIServices.Class
             {
                 CategoryDtoId = Category.Id,
                 NameCategoryDto = Category.Name,
-                DescriptionCategoryDto = Category.Description
+                SeoCategoryDTO = Category.SeoCategory,
+                DescriptionCategoryDto = Category.Description,
+                CreatedUserNameDto = Category.CreatedUserName,
+                ModifiedUserNameDto = Category.ModifiedUserName,
+                CreatedDateDto = Category.CreatedDate,
+                ModifiedDateDto = Category.ModifiedDate
+                
             };
 
             return CategoryDTO;
 
+        }
+
+        public int KayitSayisiGetir()
+        {
+            return CategoryRepo.KayitSayisi();
         }
 
         public CategoryDTO KullaniciAdiIleGetir(string User)
@@ -79,12 +91,32 @@ namespace MVCBLOG.BLL.UIServices.Class
 
         public bool Guncelle(CategoryDTO ModelDto)
         {
-            throw new NotImplementedException();
+            Category CategoryEntity = CategoryRepo.IdIleGetir(ModelDto.CategoryDtoId);
+
+            CategoryEntity.Id = ModelDto.CategoryDtoId;
+            CategoryEntity.Name = ModelDto.NameCategoryDto;
+            CategoryEntity.SeoCategory = ModelDto.SeoCategoryDTO;
+            CategoryEntity.Description = ModelDto.DescriptionCategoryDto;
+
+            return CategoryRepo.Guncelle(CategoryEntity);
         }
 
         public bool Kayit(CategoryDTO ModelDto)
         {
-            throw new NotImplementedException();
+            Category CategoryEntity = new Category()
+            {
+                Id = ModelDto.CategoryDtoId,
+                Name = ModelDto.NameCategoryDto,
+                SeoCategory = ModelDto.SeoCategoryDTO,
+                Description = ModelDto.DescriptionCategoryDto,
+                CreatedUserName = ModelDto.CreatedUserNameDto,
+                CreatedDate = ModelDto.CreatedDateDto,
+                ModifiedUserName = ModelDto.ModifiedUserNameDto,
+                ModifiedDate = ModelDto.ModifiedDateDto
+
+            };
+
+            return CategoryRepo.Kayit(CategoryEntity);
         }
 
         public bool PasifYap(CategoryDTO ModelDto)
@@ -94,7 +126,8 @@ namespace MVCBLOG.BLL.UIServices.Class
 
         public bool SilDb(int Id)
         {
-            throw new NotImplementedException();
+            Category CategoryEntity = CategoryRepo.IdIleGetir(Id);
+            return CategoryRepo.SilDb(CategoryEntity);
         }
         #endregion
 

@@ -10,33 +10,34 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="form-group">
+            @Html.Partial("Partials/_PartialResultMessages")
             <table class="table table-bordered table-striped">
                 <thead>
-                    <tr>
-                        <th style="text-align:center">Kategori Adı</th>
-                        <th style="text-align:center">Kategori Açıklaması</th>
-                        <th style="text-align:center">Düzenle</th>
-                        <th style="text-align:center">Sil</th>
-                    </tr>
+                <tr>
+                    <th style="text-align: center">Kategori Adı</th>
+                    <th style="text-align: center">Kategori Açıklaması</th>
+                    <th style="text-align: center">Düzenle</th>
+                    <th style="text-align: center">Sil</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@item.NameCategoryDto</td>
-                            <td>@item.DescriptionCategoryDto</td>
-                            <td style="text-align:center">
-                                <a href="/Admin/Category/UpdateCategory/@item.CategoryDtoId" class="btn btn-success">
-                                    <i class="fa fa-fw fa-pencil-square-o"></i> 
-                                </a>
-                            </td>
-                            <td style="text-align:center">
-                                <a href="#" class="btn btn-danger" onclick="Delete(@item.CategoryDtoId)">
-                                    <i class="fa fa-fw fa-trash-o "></i> 
-                                </a>
-                            </td>
-                        </tr>
-                    }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.NameCategoryDto</td>
+                        <td>@item.DescriptionCategoryDto</td>
+                        <td style="text-align: center">
+                            <a href="/Admin/Category/UpdateCategory/@item.CategoryDtoId" class="btn btn-success">
+                                <i class="fa fa-fw fa-pencil-square-o"></i>
+                            </a>
+                        </td>
+                        <td style="text-align: center">
+                            <a href="/Admin/Category/Delete/@item.CategoryDtoId" class="btn btn-danger" onclick="Delete(@item.CategoryDtoId)">
+                                <i class="fa fa-fw fa-trash-o "></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
                 </tbody>
             </table>
         </div>

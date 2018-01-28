@@ -1,4 +1,14 @@
-﻿
+﻿@model MVCBLOG.ENTITY.Model_DTO.CategoryDTO
+
+<script>
+            $(function(){
+                $('#title').slugIt({
+                    output: '.seolink'
+                });
+            });
+
+</script>
+
 
 @{
     ViewBag.Title = "AddCategory";
@@ -7,3 +17,37 @@
 
 <h2>Kategori Ekle</h2>
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Partial("Partials/_PartialResultMessages")
+            <div class="col-md-8">
+                <p>Adı</p>
+                @Html.EditorFor(model => model.NameCategoryDto, new {htmlAttributes = new {@class = "form-control", @id = "title", @Type = "text", @name = "title", @placeholder = "Kategori adı giriniz." }})
+            </div>
+            <div class="col-md-8">
+                <p>Permalink</p>
+                @Html.EditorFor(model => model.SeoCategoryDTO, new { htmlAttributes = new { @class = "form-control seolink", @Type = "text", @placeholder = "Seo link giriniz." }})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-8">
+                <p>Açıklaması</p>
+                @Html.TextAreaFor(x => x.DescriptionCategoryDto, new { @class = "form-control", @placeholder = "Açıklama giriniz." })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

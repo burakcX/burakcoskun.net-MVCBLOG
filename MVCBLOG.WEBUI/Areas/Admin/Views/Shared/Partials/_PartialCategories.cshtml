@@ -1,0 +1,23 @@
+﻿@using MVCBLOG.BLL.UIServices.Class
+@using MVCBLOG.ENTITY.Model_DTO
+@model MVCBLOG.ENTITY.Model_Object.PostViewModel
+@{
+
+    CategoryUIService CategoryUIService=new CategoryUIService();
+    List<SelectListItem> seciliKategoriler = new List<SelectListItem>();
+
+
+    List<CategoryDTO> ListmodelCtg = CategoryUIService.TumListe();
+
+    foreach (CategoryDTO category in ListmodelCtg)
+    {
+        SelectListItem item = new SelectListItem();
+        item.Text = category.NameCategoryDto;
+        item.Value = category.CategoryDtoId.ToString();
+        seciliKategoriler.Add(item);
+    }
+    seciliKategoriler.Insert(0, new SelectListItem() { Value = "0", Text = "Seçiniz...", Selected = true });
+
+}
+
+@Html.DropDownListFor(x => x.CategoryId, seciliKategoriler, new { @class = "form-control" })

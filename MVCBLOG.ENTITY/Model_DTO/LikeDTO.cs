@@ -24,8 +24,7 @@ namespace MVCBLOG.ENTITY.Model_DTO
         #region Relations
 
         public virtual PostDTO PostDto { get; set; }
-
-        public virtual UserDTO User { get; set; }
+        public virtual UserDTO UserDto { get; set; }
 
         #endregion
 

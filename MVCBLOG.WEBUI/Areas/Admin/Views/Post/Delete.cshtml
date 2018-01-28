@@ -1,0 +1,47 @@
+﻿@model MVCBLOG.ENTITY.Model_Object.PostViewModel
+<script src="~/Areas/Admin/Content/js/ckeditor/ckeditor.js"></script>
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Makale Sil</h2>
+
+<p>Bu makaleyi silmek istediğinize emin misiniz?</p>
+<div>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <dl class="dl-horizontal">
+            @Html.HiddenFor(model => model.PostId)
+            <dd>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <p>Başlık</p>
+                        @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                    </div>
+                </div>
+            </dd>
+
+            <dd>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <p>İçerik</p>
+                        @Html.TextAreaFor(model => model.Content, new { @class = "ckeditor" })
+                    </div>
+                </div>
+            </dd>
+
+        </dl>
+
+        <div class="form-actions no-color">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Sil" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

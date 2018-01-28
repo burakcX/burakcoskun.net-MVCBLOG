@@ -9,8 +9,8 @@ namespace MVCBLOG.ENTITY.Model_DTO
     public class BaseDTO
     {
         #region Fields
-        public DateTime CreatedDateDto { get; set; }
-        public DateTime ModifiedDateDto { get; set; }
+        public DateTime? CreatedDateDto { get; set; }
+        public DateTime? ModifiedDateDto { get; set; }
         public string CreatedUserNameDto { get; set; }
         public string ModifiedUserNameDto { get; set; } 
         #endregion

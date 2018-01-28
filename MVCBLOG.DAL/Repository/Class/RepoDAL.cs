@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using MVCBLOG.DAL.Repository.Interface;
 using System.Data.Entity;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using MVCBLOG.DAL.Context;
+using MVCBLOG.ENTITY.Model_Entity;
 
 
 namespace MVCBLOG.DAL.Repository.Class
@@ -73,6 +75,15 @@ namespace MVCBLOG.DAL.Repository.Class
         public bool Kayit(T entity)
         {
             Dbset.Add(entity);
+
+            //if (entity is Base)
+            //{
+            //    Base o = entity as Base;
+            //    o.CreatedDate=DateTime.Now;
+            //    o.ModifiedDate=DateTime.Now;
+            //    o.CreatedUserName = "system";
+            //}
+
             //return _ctx.SaveChanges() > 0;
             if (context.SaveChanges() > 0)
             {
@@ -87,6 +98,14 @@ namespace MVCBLOG.DAL.Repository.Class
         public bool Guncelle(T entity)
         {
             Dbset.Attach(entity);
+
+            //if (entity is Base)
+            //{
+            //    Base o = entity as Base;
+            //    o.ModifiedDate = DateTime.Now;
+            //    o.ModifiedUserName = "system";
+            //}
+
             context.Entry(entity).State = EntityState.Modified;
             return context.SaveChanges() > 0;
         }

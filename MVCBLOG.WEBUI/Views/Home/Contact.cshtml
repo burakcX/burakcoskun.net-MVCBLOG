@@ -1,0 +1,123 @@
+﻿@using System.ComponentModel.DataAnnotations;
+@using System.Web.Optimization
+@using MVCBLOG.ENTITY.Model_Entity
+@using MVCBLOG.WEBUI.Areas.Admin
+@model MVCBLOG.ENTITY.Model_DTO.ContactDTO
+
+@*@{
+        Html.EnableClientValidation(true);
+    }*@
+
+@Scripts.Render("~/bundles/js/validation")
+
+<script>
+    $(document).ready(function() {
+        $("#aranankelime").autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "@Url.Action("SearchPost")",
+                    type: "POST",
+                    dataType: "json",
+                    data: { deger: request.term },
+                    success: function(data) {
+                        response($.map(data, function(item) {
+                            return { label: item.TitleDto, value: item.TitleDto };
+                        }));
+                    }
+                });
+            },
+            messages: {
+                sonuc: "",
+                sonuc: ""
+            }
+        });
+    })
+</script>
+
+<div class="col-sm-12">
+    <div class="well well-sm">
+        <strong class="text-danger" style="float: left; font-size: 22px;">İletişim Formu</strong>
+        <br />
+        <hr />
+        @using (Ajax.BeginForm("Contact", "Home", new AjaxOptions { HttpMethod = "POST", OnSuccess = "OnSuccess", OnFailure = "OnFailure" }, new { @id = "iletisimFormu" }))
+        {
+            <div class="form-group">
+                <label>Ad</label>
+                @Html.TextBoxFor(x => x.NameDTO, new { @class = "form-control", id = "NameDTO", @placeholder = "Adınızı giriniz." })
+            </div>
+            <div class="form-group">
+                <label>Soyad</label>
+                @Html.TextBoxFor(x => x.SurnameDTO, new { @class = "form-control", id = "SurnameDTO", @placeholder = "Soyadınızı giriniz." })
+            </div>
+            <div class="form-group">
+                <label>E-Posta</label>
+                @Html.TextBoxFor(x => x.EmailDTO, new { @class = "form-control", id = "EmailDTO", @placeholder = "E-posta adresinizi giriniz." })
+            </div>
+            <div class="form-group">
+                <label>Konu</label>
+                @Html.TextBoxFor(x => x.SubjectDTO, new { @class = "form-control", id = "SubjectDTO", @placeholder = "Konu başlığını giriniz." })
+            </div>
+            <div class="form-group">
+                <label>Mesaj</label>
+                @Html.TextAreaFor(x => x.MessageDTO, new { @class = "form-control", id = "MessageDTO", @placeholder = "Mesajınızı giriniz." })
+            </div>
+
+            <div class="form-group">
+                <br />
+                <input id="submit" type="submit" value="Gönder" class="btn btn-primary">
+            </div>
+        }
+    </div>
+
+</div>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("#iletisimFormu").validate(
+               {
+                   rules:
+                       {
+                           NameDTO: { required: true },
+                           SurnameDTO: { required: true },
+                           EmailDTO: { required: true, email: true },
+                           SubjectDTO: { required: true },
+                           MessageDTO: { required: true, maxlength: 255, minlength: 30 }
+                       },
+                   messages:
+                       {
+                           NameDTO: { required: "Ad alanı boş bırakılamaz" },
+                           SurnameDTO: { required: "Soyad alanı boş bırakılamaz" },
+                           EmailDTO: { required: "Email alanı boş bırakılamaz", email: "Email formatında giriniz" },
+                           SubjectDTO: { required: "Konu başlığı boş bırakılamaz" },
+                           MessageDTO: { required: "Mesaj alanı boş bırakılamaz", maxlength: "255 karakterden fazla olamaz", minlength: "30 karakterden az olamaz" }
+                       }
+               });
+        });
+</script>
+
+<script type="text/javascript">
+    function OnSuccess(data) {
+        if (data.param1 == 200) {
+            swal({
+                type: 'success',
+                title: 'Form başarıyla gönderildi!',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        else {
+            swal({
+                type: 'error',
+                title: 'Form gönderilemedi!',
+                showConfirmButton: false,
+                timer: 1500
+            }
+            );
+        }
+
+        document.getElementById("iletisimFormu").reset();
+    }
+    function OnFailure(data) {
+        alert('HTTP Status Code: ' + data.param1 + '  Error Message: ' + data.param2);
+    }
+</script>

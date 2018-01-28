@@ -1,0 +1,78 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="~/Content/images/fav_bc.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title style="color: white;">Burak Coşkun'un Web Günlüğü</title>
+
+    @Styles.Render("~/bundles/css/genel")
+
+    <script>
+        $(document).ready(function () {
+            $("#aranankelime").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "@Url.Action("SearchPost")",
+                        type: "POST",
+                        dataType: "json",
+                        data: { deger: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.TitleDto, value: item.TitleDto };
+                            }));
+                        }
+                    });
+                },
+                messages: {
+                    sonuc: "",
+                    sonuc: ""
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <strong class="text-danger" style="float: left; font-size: 22px;">Hakkımda</strong>
+                <br />
+                <hr />
+                <p><b>Ben Kimim?</b></p>
+                <p>Merhaba ben Burak COŞKUN(Yazılım Uzmanı, Blogger, End&uuml;stri M&uuml;hendisi). Son 6 yıldır Kurumsal Sharepoint ve Microsoft .NET teknolojileri ile &ccedil;eşitli projelerde bulundum ve benzeri projelere devam etmekteyim. Kariyerim boyunca, tecr&uuml;be ve yeteneklerimi devamlı olarak arttırmayı ama&ccedil;ladım. Her zaman &ouml;ğrenmeye a&ccedil;ık, &ccedil;ok y&ouml;nl&uuml;,&ccedil;&ouml;z&uuml;m odaklı hareket eden bir kişi olarak almış olduğum ve gelecekte alacağım eğitimler ışığında kendime ve &ccedil;alıştığım şirkete maksimum fayda kazadırmayı hedef edinmekteyim.</p>
+                <br/>
+                <p><b>Neden Blog yazıyorum?</b></p>
+                <p>Her yazılımcı gibi ben de yeni çıkan, işimi kolaylaştıran teknolojileri araştırmayı ve kullanmayı seviyorum. Araştırmalarım sonucunda oluşan bilgileri daha sonra faydalanmak ve diğer yazılımseverlerle paylaşmak üzere bloğumda toparlayarak makale olarak yayınlıyorum. Umarım yazdığım makaleleri faydalı bulursunuz. Bu arada bu bloğun ön yüz ve arka yüz(kontrol panel) kısımlarını tamamıyla ASP.NET MVC 5 framework ü ve biz yazılımcılar için tam hakimiyet demek olan Entity Framework ile Code First yaklaşımı ile oluşturdum. Bloğun kaynak kodlarının tümü github hesabımda bulunmaktadır. İstediğiniz gibi indirip inceleyebilirsiniz. 
+                </p>
+                <br />
+                <p><b>Beğendiğim Bir Söz</b></p>
+                <blockquote class="blockquote">
+                    <p class="mb-0">Bir mum diğerini tutuşturmakla ışığından birşey kaybetmez.</p>
+                    <footer class="blockquote-footer"><cite title="">Mevlâna Celâlediin-i Rûmî (k.s)</cite></footer>
+                </blockquote>
+                <br />
+                <p style="font-size: 15px;"><strong>Sertifikalarım:&nbsp;</strong></p>
+                <ul>
+                    <li style="font-size: 15px;">Programming in C#</li>
+                    <li style="font-size: 15px;">Developing ASP.NET MVC 4 Web Applications</li>
+                    <li style="font-size: 15px;">Developing ASP.NET MVC 5 Web Applications</li>
+                    <li style="font-size: 15px;">Programming in HTML5 with Javascripts and CSS3</li>
+                    <li style="font-size: 15px;">Implementing a Data Warehouse with Microsoft SQL Server</li>
+                    <li style="font-size: 15px;">Implementing Data Models and Reports with Microsoft SQL Server</li>
+                    <li style="font-size: 15px;">Designing Business Intelligence Solutions with Microsoft SQL Server 2012</li>
+                    <li style="font-size: 15px;">Sharepoint 2010 Business Intelligence</li>
+                    <li style="font-size: 15px;">Core Solutions of Microsoft Sharepoint 2013</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/js/genel")
+    <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

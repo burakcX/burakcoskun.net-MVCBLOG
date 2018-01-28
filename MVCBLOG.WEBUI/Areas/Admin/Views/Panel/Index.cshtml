@@ -1,75 +1,109 @@
-﻿
+﻿@using MVCBLOG.ENTITY.Model_DTO
+
+@{
+    UserDTO UserDto = new UserDTO();
+
+    if (Session["User"] != null)
+    {
+        UserDto = (UserDTO)Session["User"];
+
+    }
+}
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
 <div class="row">
-    <div class="col-xl-3 col-sm-6 mb-3">
-        <div class="card text-white bg-primary o-hidden h-100">
-            <div class="card-body">
-                <div class="card-body-icon">
-                    <i class="fa fa-fw fa-comments"></i>
+    <div class="col-md-12 text-center ">
+        <div class="panel panel-default">
+            <div class="userprofile social ">
+                <div class="userpic">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="userpicimg">
                 </div>
-                <div class="mr-5">26 New Messages!</div>
+                <h3 class="username">@(UserDto.NameDTO + " " + UserDto.SurnameDTO)</h3>
+                <p>Ankara, Türkiye</p>
+                <div class="socials tex-center">
+                    <a href="" class="btn btn-circle btn-primary ">
+                        <i class="fa fa-facebook"></i>
+                    </a> <a href="" class="btn btn-circle btn-danger ">
+                        <i class="fa fa-google-plus"></i>
+                    </a> <a href="" class="btn btn-circle btn-info ">
+                        <i class="fa fa-twitter"></i>
+                    </a> <a href="" class="btn btn-circle btn-warning "><i class="fa fa-envelope"></i></a>
+                </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </a>
+            <div class="col-md-12 border-top border-bottom">
+                <ul class="nav nav-pills pull-left countlist" role="tablist">
+                    <li role="presentation">
+                        <h3>
+                            1452<br>
+                            <small>Follower</small>
+                        </h3>
+                    </li>
+                    <li role="presentation">
+                        <h3>
+                            245<br>
+                            <small>Following</small>
+                        </h3>
+                    </li>
+                    <li role="presentation">
+                        <h3>
+                            5000<br>
+                            <small>Activity</small>
+                        </h3>
+                    </li>
+                </ul>
+                <button class="btn btn-primary followbtn">Follow</button>
+            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
-        <div class="card text-white bg-warning o-hidden h-100">
-            <div class="card-body">
-                <div class="card-body-icon">
-                    <i class="fa fa-fw fa-list"></i>
-                </div>
-                <div class="mr-5">11 New Tasks!</div>
+    @Html.Partial("Partials/AdminPanelCounters")
+
+    <div class="col-md-3 col-sm-12 pull-right">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="page-header small">Worked with many domain</h1>
+                <p class="page-subtitle small">Like to work fr different business</p>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </a>
+
+            <ul class="list-group">
+                <li class="list-group-item"><span class="fa fa-male"></span> Worked with 1000+ people</li>
+                <li class="list-group-item"><span class="fa fa-institution"></span> 60+ offices</li>
+                <li class="list-group-item"><span class="fa fa-user"></span> 50000+ satify customers</li>
+                <li class="list-group-item"><span class="fa fa-clock-o"></span> Work hours many and many still counting</li>
+                <li class="list-group-item"><span class="fa fa-heart"></span> Customer satisfaction for servics</li>
+            </ul>
+
+            <div class="clearfix"></div>
         </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
-        <div class="card text-white bg-success o-hidden h-100">
-            <div class="card-body">
-                <div class="card-body-icon">
-                    <i class="fa fa-fw fa-shopping-cart"></i>
-                </div>
-                <div class="mr-5">123 New Orders!</div>
+    <div class="col-md-3 col-sm-12 pull-right">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="page-header small">Personal Details</h1>
+                <p class="page-subtitle small">Limited information is visible</p>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </a>
-        </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
-        <div class="card text-white bg-danger o-hidden h-100">
-            <div class="card-body">
-                <div class="card-body-icon">
-                    <i class="fa fa-fw fa-support"></i>
+            <div class="col-md-12 photolist">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-3">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="" alt="">
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="" alt="">
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="" alt="">
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="" alt="">
+                    </div>
                 </div>
-                <div class="mr-5">13 New Tickets!</div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">View Details</span>
-                <span class="float-right">
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </a>
+            <div class="clearfix"></div>
         </div>
     </div>
 </div>
-
-

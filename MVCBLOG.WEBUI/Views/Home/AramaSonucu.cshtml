@@ -1,0 +1,44 @@
+﻿@using MVCBLOG.ENTITY.Model_DTO
+@model IEnumerable<PostDTO>
+
+@{
+    ViewBag.Title = "AramaSonucu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="well inline-headers">
+            <h3>Aranan Kelime: "@ViewBag.aranankelime"</h3>
+            <h3 class="text-danger textMarginLeft">@Model.Count() adet sonuç bulundu</h3>
+        </div>
+    </div>
+</div>
+
+
+@foreach (PostDTO item in Model)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group">
+                <a href="/Home/PostDetail/@item.SeolinkDto" class="list-group-item">
+                    <h2 class="list-group-item-heading">@item.TitleDto</h2>
+                    <br>
+                    <p class="list-group-item-text">
+                        <span class="text-danger">Kategori: </span>@item.CategoryDTO.NameCategoryDto|
+                        <span class="text-danger">Okunma Sayısı: </span>@item.ViewCountDto |
+                        <span class="text-danger">Makale Tarihi: </span>@item.CreatedDateDto
+                    </p>
+                </a>
+                <br>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+
+

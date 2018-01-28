@@ -21,8 +21,7 @@ namespace MVCBLOG.ENTITY.Model_Entity
         #region Relations
 
         public virtual Post Post { get; set; }
-        public virtual User LikedUser { get; set; }
-
+        public virtual User User { get; set; }
 
         #endregion
 

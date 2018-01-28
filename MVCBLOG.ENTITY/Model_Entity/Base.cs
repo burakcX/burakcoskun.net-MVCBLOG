@@ -10,16 +10,16 @@ namespace MVCBLOG.ENTITY.Model_Entity
     public class Base
     {
         #region Fields
-        [Required]
-        public DateTime CreatedDate { get; set; }
+        
+        public DateTime? CreatedDate { get; set; }
 
-        [Required]
-        public DateTime ModifiedDate { get; set; }
+        
+        public DateTime? ModifiedDate { get; set; }
 
-        [Required]
+        [StringLength(30)]
         public string CreatedUserName { get; set; }
 
-        [Required, StringLength(30)]
+        [StringLength(30)]
         public string ModifiedUserName { get; set; } 
         #endregion
     }

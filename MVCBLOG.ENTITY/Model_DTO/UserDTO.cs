@@ -32,6 +32,13 @@ namespace MVCBLOG.ENTITY.Model_DTO
         [Compare("PasswordDTO", ErrorMessage = "Girmiş olduğunuz şifreler eşleşmemektedir. Lütfen kontrol ediniz.")]
         public string RePasswordDTO { get; set; }
 
+        [StringLength(30)]
+        public string ProfileImageFilenameDto { get; set; }
+
+        public bool IsActiveDto { get; set; }
+
+        public Guid ActivateGuidDto { get; set; }
+
         public int TypeDTO { get; set; }
 
         public string IpDTO { get; set; }
@@ -39,9 +46,10 @@ namespace MVCBLOG.ENTITY.Model_DTO
         #endregion
 
         #region Relations
-        public virtual List<PostDTO> AdminUserPostsDTO { get; set; }
-        public virtual List<UserAuthorityDTO> UserAuthorityDTO { get; set; }
-        public virtual List<LikeDTO> UserlikesDTO { get; set; }
+        public virtual List<PostDTO> UserPostDtoList { get; set; }
+        public virtual List<UserRoleDTO> UserRoleDtoList { get; set; }
+        public virtual List<LikeDTO> UserlikeDtoList { get; set; }
+        public virtual List<CommentDTO> CommentsDtoList { get; set; }
         #endregion
     }
 }

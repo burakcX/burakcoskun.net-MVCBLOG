@@ -13,6 +13,8 @@ namespace MVCBLOG.BLL.UIServices.Interface
     {
         List<PostDTO> PostListeleCatIdIle(int Id);
         PostDTO PostDetayGetirIdIle(int Id);
+        PostDTO PostDetayGetirSeoLinkIle(string SeoLink);
         PostDTO PostGetirKullaniciAdiIle(string User);
+        List<PostDTO> PostGetirBaslikIle(string Baslik);
     }
 }

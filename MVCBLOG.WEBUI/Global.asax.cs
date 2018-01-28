@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 using MVCBLOG.COMMON;
+using MVCBLOG.WEBUI.App_Start;
 
 namespace MVCBLOG.WEBUI
 {
@@ -14,8 +16,11 @@ namespace MVCBLOG.WEBUI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             
         }
+
+      
+
     }
 }

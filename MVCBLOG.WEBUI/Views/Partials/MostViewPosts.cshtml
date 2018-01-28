@@ -1,0 +1,10 @@
+﻿@using MVCBLOG.ENTITY.Model_DTO
+@model List<MVCBLOG.ENTITY.Model_DTO.PostDTO>
+
+@foreach (PostDTO item in Model)
+{
+    <a href="/Home/PostDetail/@item.SeolinkDto"
+       class="menu-item list-group-item">
+        @item.TitleDto
+    </a>
+}

@@ -39,6 +39,7 @@ namespace MVCBLOG.WEBUI.Controllers
                     KategoriAdi = item.NameCategoryDto,
                     KategoridekiPostSayisi = item.PostDtoList.Count(),
                     CatId = item.CategoryDtoId,
+                    KategoriSeoLink = item.SeoCategoryDTO,
                     CatDesc = item.DescriptionCategoryDto
                 };
                 CmList.Add(cm);
@@ -48,10 +49,22 @@ namespace MVCBLOG.WEBUI.Controllers
 
         public PartialViewResult RecentPosts()
         {
-            List<PostDTO> PostDtoList = PostUIService.TumListe().OrderByDescending(c => c.PostDtoId).ToList();
+            List<PostDTO> PostDtoList = PostUIService.TumListe()
+                .OrderByDescending(c => c.PostDtoId)
+                .Take(5).ToList();
+                
 
             return PartialView(PostDtoList);
         }
+
+        public PartialViewResult MostViewPosts()
+        {
+            List<PostDTO> PostDtoList = PostUIService.TumListe().OrderByDescending(c => c.ViewCountDto).Take(5).ToList();
+
+            return PartialView(PostDtoList);
+        }
+
+
         #endregion
     }
 }

@@ -3,7 +3,8 @@
 
 @foreach (PostDTO item in Model)
 {
-    <ul class="list-unstyled">
-        <li><a href="/Post/Index/@item.PostDtoId">@item.TitleDto</a></li>
-    </ul>
+    <a href="/Home/PostDetail/@item.SeolinkDto"
+       class="menu-item list-group-item">
+        @item.TitleDto
+    </a>
 }

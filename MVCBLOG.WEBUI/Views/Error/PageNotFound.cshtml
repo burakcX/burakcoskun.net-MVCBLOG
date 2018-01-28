@@ -1,0 +1,31 @@
+﻿@model Exception
+
+
+@{
+    ViewBag.Title = "PageError";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PageError</h2>
+
+<h1>
+    Oops!
+</h1>
+
+<img src="~/Content/images/404notfound.jpg" class="img-responsive" />
+<br />
+<p>@Model.Message</p>
+
+<h2>
+    Sorry, an error occurred while processing your request.
+</h2>
+<h2>Exception details</h2>
+
+<div style="margin-top: 20px;" class="error-actions">
+        <a href="/" class="btn btn-primary btn-md">
+            <span class="glyphicon glyphicon-home"></span>
+            Ana Sayfa
+        </a>
+    </div>
+
+

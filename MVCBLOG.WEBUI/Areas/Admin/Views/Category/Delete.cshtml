@@ -1,0 +1,47 @@
+﻿@model MVCBLOG.ENTITY.Model_DTO.CategoryDTO
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Kategori Sil</h2>
+
+<p>Bu kategoriyi silmek istediğinize emin misiniz?</p>
+<div>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <dl class="dl-horizontal">
+            @Html.HiddenFor(model => model.CategoryDtoId)
+            <dd>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <p>Başlık</p>
+                        @Html.TextBoxFor(model => model.NameCategoryDto, new { @class = "form-control" })
+                    </div>
+                </div>
+            </dd>
+
+            <dd>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <p>İçerik</p>
+                        @Html.TextAreaFor(model => model.DescriptionCategoryDto, new { @class = "form-control" })
+                    </div>
+                </div>
+            </dd>
+
+        </dl>
+
+        <div class="form-actions no-color">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Sil" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

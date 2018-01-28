@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\BcMvcBlogDbContext.cs" />
-    <Compile Include="Migrations\201710101142109_initialmigration.cs" />
-    <Compile Include="Migrations\201710101142109_initialmigration.Designer.cs">
-      <DependentUpon>201710101142109_initialmigration.cs</DependentUpon>
+    <Compile Include="Migrations\201711031227557_initialcreate.cs" />
+    <Compile Include="Migrations\201711031227557_initialcreate.Designer.cs">
+      <DependentUpon>201711031227557_initialcreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,9 +74,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710101142109_initialmigration.resx">
-      <DependentUpon>201710101142109_initialmigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711031227557_initialcreate.resx">
+      <DependentUpon>201711031227557_initialcreate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

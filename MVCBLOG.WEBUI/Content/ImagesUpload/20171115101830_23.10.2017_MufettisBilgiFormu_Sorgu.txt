@@ -1,0 +1,61 @@
+SELECT     MB.Muf_ID, MB.Muf_KayitTarihi, MB.Muf_GuncellemeTarihi, MB.Muf_KaydiOlusturan, MB.Muf_TC, MB.Muf_Ad, MB.Muf_Soyad, MB.Muf_DogumYeri, MB.Muf_DogumTarihi, MB.Muf_MedeniHali, MB.Muf_Uyrugu, MB.Muf_Dini, MB.Muf_Il, MB.Muf_Ilce, 
+                  MB.Muf_MahalleKoy, MB.Muf_CiltNo, MB.Muf_AileSiraNo, MB.Muf_SiraNo, MB.Muf_VerilisSebebi, MB.Muf_VerilisTarihi, MB.Muf_SeriSiraNo, MB.Muf_Ikametgah, MB.Muf_FiilenAdres, MB.Muf_EvTel, MB.Muf_CepTel, MB.Muf_AskerBasTarih, 
+                  MB.Muf_AskerTerhisTarih, MB.Muf_AskerAlinanCeza, MB.Muf_EnSonCalisKurum, MB.Muf_EnSonCalisKurumUnvan, MB.Muf_EnSonCalisKurumBasTarih, MB.Muf_EnSonCalisKurumAyrilmaTarih, MB.Muf_EnSonCalisKurumAyrilmaSebeb, MB.Muf_MezOlunanIlkOkul, 
+                  MB.Muf_IlkOkulBasTarih, MB.Muf_IlkOkulBitisTarih, MB.Muf_MezOlunanOrtOkul, MB.Muf_OrtOkulBasTarih, MB.Muf_OrtOkulBitisTarih, MB.Muf_MezOlunanLise, MB.Muf_LisOkulBasTarih, MB.Muf_LisOkulBitisTarih, MB.Muf_MezOlunanUniv, 
+                  MB.Muf_MezOlunanFakulte, MB.Muf_MezOlunanBolum, MB.Muf_UnivBasTarih, MB.Muf_UnivBitisTarih, MB.Muf_YukLisYapUniv, MB.Muf_YukLisYapFakulte, MB.Muf_YukLisYapBolum, MB.Muf_YukLisBasTarih, MB.Muf_YukLisBitisTarih, MB.Muh_Mahkumiyet, 
+                  MB.Muh_YabDilSinavTur, MB.Muh_YabDilPuan, MB.Muf_EsCalistigiKurum, MB.Muf_EsUnvan, MB.Muf_EsKurumAdres, MB.Muf_EsBasTarih, MB.Muf_Baba_Tc, MB.Muf_Baba_Adi, MB.Muf_Baba_Soyadi, MB.Muf_Baba_Uyruk, MB.Muf_Baba_DogumYer, 
+                  MB.Muf_Baba_DogumTarih, MB.Muf_Baba_Adres, MB.Muf_Anne_Tc, MB.Muf_Anne_Adi, MB.Muf_Anne_Soyadi, MB.Muf_Anne_Uyruk, MB.Muf_Anne_DogumYer, MB.Muf_Anne_DogumTarih, MB.Muf_Anne_Adres, MB.Muf_Es_Tc, MB.Muf_Es_Adi, 
+                  MB.Muf_Es_Soyadi, MB.Muf_Es_Uyruk, MB.Muf_Es_DogumYer, MB.Muf_Es_DogumTarih, MB.Muf_Es_Adres, MB.Muf_Cocuk1_Tc, MB.Muf_Cocuk1_Adi, MB.Muf_Cocuk1_Soyadi, MB.Muf_Cocuk1_Uyruk, MB.Muf_Cocuk1_DogumYer, MB.Muf_Cocuk1_DogumTarih, 
+                  MB.Muf_Cocuk1_Adres, MB.Muf_Cocuk2_Tc, MB.Muf_Cocuk2_Adi, MB.Muf_Cocuk2_Soyadi, MB.Muf_Cocuk2_Uyruk, MB.Muf_Cocuk2_DogumYer, MB.Muf_Cocuk2_DogumTarih, MB.Muf_Cocuk2_Adres, MB.Muf_Cocuk3_Tc4, MB.Muf_Cocuk3_Adi, 
+                  MB.Muf_Cocuk3_Soyadi, MB.Muf_Cocuk3_Uyruk, MB.Muf_Cocuk3_DogumYer, MB.Muf_Cocuk3_DogumTarih, MB.Muf_Cocuk3_Adres, MB.Muf_Cocuk4_Tc, MB.Muf_Cocuk4_Adi, MB.Muf_Cocuk4_Soyadi, MB.Muf_Cocuk4_Uyruk, MB.Muf_Cocuk4_DogumYer, 
+                  MB.Muf_Cocuk4_DogumTarih, MB.Muf_Cocuk4_Adres, MB.Muf_Promosyon
+FROM        dbo.GUV_SOR_MUFETTIS_BILGI AS MB INNER JOIN
+                  dbo.GUV_SOR_KARDESLER AS KB ON MB.Muf_ID = KB.Muf_ID
+WHERE     (MB.AktifMi = 1) AND MB.Muf_TC IN (
+'12848126248'
+,'65776184194'
+,'11179184170'
+,'51916250560'
+,'38834213136'
+,'36248098820'
+,'17888457154'
+,'54883415468'
+,'67825126322'
+,'40433171564'
+,'62212443914'
+,'11681919680'
+,'17927076728'
+,'14596130188'
+,'14331014322'
+,'40669941504'
+,'43766073130'
+,'16150022052'
+,'32326575474'
+,'25547597868'
+,'54832391218'
+,'37147542902'
+,'15533401002'
+,'56305094046'
+,'39320011526'
+,'46606208990'
+,'16028438732'
+,'28609324150'
+,'61414378284'
+,'45085800336'
+,'50572480090'
+,'40768742132'
+,'39766443776'
+,'37771789032'
+,'52162429540'
+,'35554445656'
+,'10601211248'
+,'15623810264'
+,'11744985324'
+,'31795598434'
+,'16172857052'
+,'47149803512'
+,'12175985648'
+,'34672815242'
+,'13414219500'
+,'44530455268'
+)

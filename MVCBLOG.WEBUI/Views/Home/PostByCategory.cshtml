@@ -54,7 +54,7 @@
             </h2>
             <p style="font-size: 13px;">
                 <span class="glyphicon glyphicon-user"></span> @item.UserDTO.NameDTO @item.UserDTO.SurnameDTO &nbsp;&nbsp;&nbsp;
-                <span class="glyphicon glyphicon-calendar"></span> @item.CreatedDateDto.ToString("dd.MM.yyyy")  &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-calendar"></span> @item.CreatedDateDto.Value.ToString("dd.MM.yyyy")  &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="glyphicon glyphicon-eye-open leftDistance"></span> 28  &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="glyphicon glyphicon-comment leftDistance"></span> 0  &nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="glyphicon glyphicon-th-list leftDistance"></span> @item.CategoryDTO.NameCategoryDto  &nbsp;&nbsp;&nbsp;&nbsp;
@@ -73,7 +73,7 @@
                     }
 
                     <br /><br />
-                    <a class="btn btn-primary" style="font-size: 13px;" href="#">Devamını Oku.. <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <a class="btn btn-primary" style="font-size: 13px;" href="/Home/PostDetails/@item.PostDtoId">Devamını Oku.. <span class="glyphicon glyphicon-chevron-right"></span></a>
                 </section>
             </article>
         </div>

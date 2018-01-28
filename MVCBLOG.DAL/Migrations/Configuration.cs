@@ -1,5 +1,3 @@
-using MVCBLOG.DAL.Context;
-
 namespace MVCBLOG.DAL.Migrations
 {
     using System;
@@ -7,14 +5,14 @@ namespace MVCBLOG.DAL.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BcMvcBlogDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<MVCBLOG.DAL.Context.BcMvcBlogDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(BcMvcBlogDbContext context)
+        protected override void Seed(MVCBLOG.DAL.Context.BcMvcBlogDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -7,6 +7,7 @@
 
 <h2>Makaleler</h2>
 
+@Html.Partial("Partials/_PartialResultMessages")
 <div class="row">
     <div class="col-lg-8">
         <div class="form-group">
@@ -34,12 +35,12 @@
                             <td></td>
                             <td>@item.CreatedDateDto</td>
                             <td style="text-align:center">
-                                <a href="/Admin/BlogPost/UpdateBlogPost/@item.PostDtoId" class="btn btn-success">
+                                <a href="/Admin/Post/Update/@item.PostDtoId" class="btn btn-success">
                                     <i class="fa fa-fw fa-pencil-square-o"></i> 
                                 </a>
                             </td>
                             <td style="text-align:center">
-                                <a href="#" class="btn btn-danger" onclick="Delete(@item.PostDtoId)">
+                                <a href="/Admin/Post/Delete/@item.PostDtoId" class="btn btn-danger">
                                     <i class="fa fa-fw fa-trash-o "></i> 
                                 </a>
                             </td>

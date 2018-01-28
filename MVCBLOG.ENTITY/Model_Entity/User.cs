@@ -35,22 +35,24 @@ namespace MVCBLOG.ENTITY.Model_Entity
         [Compare("Password", ErrorMessage = "Girmiş olduğunuz şifreler eşleşmemektedir. Lütfen kontrol ediniz.")]
         public string RePassword { get; set; }
 
-        [StringLength(30)]
+     
         public string ProfileImageFilename { get; set; }
 
+        [Required]
         public bool IsActive { get; set; }
 
-        public Guid ActivateGuid { get; set; }
+        public Guid? ActivateGuid { get; set; }
 
-        public int Type { get; set; }
+        public int? Type { get; set; }
 
+        
         public string Ip { get; set; }
 
         #endregion
 
         #region Relations
         public virtual List<Post> UserPosts { get; set; }
-        public virtual List<UserAuthority> UserAuthority { get; set; }
+        public virtual List<UserRole> UserRole { get; set; }
         public virtual List<Like> Userlike { get; set; }
         public virtual List<Comment> Comments { get; set; }
         #endregion

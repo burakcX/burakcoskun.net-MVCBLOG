@@ -1,0 +1,61 @@
+﻿@model MVCBLOG.ENTITY.Model_DTO.PostDTO
+
+<script>
+    $(document).ready(function() {
+        $("#aranankelime").autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "@Url.Action("SearchPost")",
+                    type: "POST",
+                    dataType: "json",
+                    data: { deger: request.term },
+                    success: function(data) {
+                        response($.map(data, function(item) {
+                            return { label: item.TitleDto, value: item.TitleDto };
+                        }));
+                    }
+                });
+            },
+            messages: {
+                sonuc: "",
+                sonuc: ""
+            }
+        });
+    })
+</script>
+
+<div class="panel panel-default" style="background-color:#ffffff">
+    <div class="panel-heading baslik-panel">
+        <h2 style="color: #b94a48;" class="titleFontSize">
+            @Model.TitleDto
+        </h2>
+        <p style="font-size: 13px;">
+            <span class="glyphicon glyphicon-user"></span> @Model.UserDTO.NameDTO @Model.UserDTO.SurnameDTO &nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-calendar"></span> @Model.CreatedDateDto.Value.ToString("dd.MM.yyyy")  &nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-eye-open leftDistance"></span> @Model.ViewCountDto  &nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-comment leftDistance"></span> @Model.LikeCountDto  &nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-th-list leftDistance"></span> @Model.CategoryDTO.NameCategoryDto  &nbsp;&nbsp;&nbsp;&nbsp;
+
+        </p>
+    </div>
+    <div class="panel-body">
+        <article class="post" id="postArticle">
+            <section class="post-body text articleFontSize">
+                @if (!string.IsNullOrEmpty(@HttpUtility.HtmlDecode(Model.ContentDto)) && @HttpUtility.HtmlDecode(Model.ContentDto).Length > 400)
+                {
+                    @Html.Raw(@HttpUtility.HtmlDecode(Model.ContentDto))
+                }
+                else
+                {
+                    @Html.Raw(@HttpUtility.HtmlDecode(Model.ContentDto))
+                }
+
+            </section>
+        </article>
+    </div>
+</div>
+
+
+
+
+

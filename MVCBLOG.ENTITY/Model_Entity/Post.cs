@@ -14,16 +14,19 @@ namespace MVCBLOG.ENTITY.Model_Entity
         #region Fields
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Lütfen Başlık kısmını doldurunuz."), StringLength(100)]
+        [Required(ErrorMessage = "Lütfen Başlık kısmını doldurunuz."), StringLength(300)]
         public string Title { get; set; }
         
         public string Seolink { get; set; }
 
         [Required(ErrorMessage = "Lütfen İçerik kısmını doldurunuz.")]
         public string Content { get; set; }
+        
+        public int? ViewCount { get; set; }
+        public int? LikeCount { get; set; }
 
-        public int ViewCount { get; set; }
-        public int LikeCount { get; set; }
+        public int CategoryId { get; set; }
+        public int UserId { get; set; }
 
         #endregion
 
@@ -32,7 +35,7 @@ namespace MVCBLOG.ENTITY.Model_Entity
         public virtual User User { get; set; }
         public virtual List<Tag> TagList { get; set; }
         public virtual List<Comment> CommentList { get; set; }
-        public virtual List<Like> PostLike { get; set; }
+        public virtual List<Like> PostLikeList { get; set; }
 
         #endregion
 

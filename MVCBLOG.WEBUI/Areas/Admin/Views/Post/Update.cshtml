@@ -1,0 +1,84 @@
+﻿@model MVCBLOG.ENTITY.Model_Object.PostViewModel
+@using System.ComponentModel.DataAnnotations
+@using MVCBLOG.ENTITY.Model_Object
+
+<script src="~/Areas/Admin/Content/js/ckeditor/ckeditor.js"></script>
+<script src="~/Areas/Admin/Content/js/ckfinder/ckfinder.js"></script>
+
+
+<script>
+    $(function () {
+        $('#title').slugIt({
+            output: '.seolink'
+        });
+    });
+
+</script>
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Makale Güncelle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.PostId)
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Partial("Partials/_PartialResultMessages")
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <p>Başlık</p>
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label>Permalink</label>
+                @Html.TextBoxFor(x => x.Seolink, new { @class = "form-control seolink", @Type = "text", @placeholder = "Seo link giriniz." })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <p>İçerik</p>
+                @Html.Partial("Partials/_PartialCategories")
+
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <p>İçerik</p>
+                @Html.TextArea("Content")
+                <script type="text/javascript">
+                    var editor = CKEDITOR.instances['Content'];
+                    if (editor) { editor.destroy(true); }
+                    CKEDITOR.replace('Content', {
+                        enterMode: CKEDITOR.ENTER_BR,
+                    });
+                    CKFinder.setupCKEditor(null, '@Url.Content("~/Areas/Admin/Content/js/ckfinder/")');
+                </script>
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-success active">Makale Güncelle</button>
+            </div>
+        </div>
+    </div>
+}
+
+

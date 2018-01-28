@@ -15,6 +15,19 @@ namespace MVCBLOG.WEBUI
 
             routes.MapMvcAttributeRoutes();
 
+
+            routes.MapRoute(
+            name: "PostByCategoryUrl",
+            url: "{controller}/PostByCategoryUrl/{SeoLinkUrl}",
+            defaults: new { controller = "Home", action = "PostByCategoryUrl" }
+            );
+
+            routes.MapRoute(
+                name: "ReadSeo",
+                url: "{controller}/PostDetail/{seolink}",
+                defaults: new { controller = "Home", action = "PostDetail" }
+                );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

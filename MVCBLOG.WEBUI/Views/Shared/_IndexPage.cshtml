@@ -1,0 +1,64 @@
+﻿@using MVCBLOG.ENTITY.Model_DTO
+@using PagedList.Mvc
+
+
+<script>
+    $(document).ready(function () {
+        $("#aranankelime").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "@Url.Action("SearchPost")",
+                    type: "POST",
+                    dataType: "json",
+                    data: { deger: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.TitleDto, value: item.TitleDto };
+                        }));
+                    }
+                });
+            },
+            messages: {
+                sonuc: "",
+                sonuc: ""
+            }
+        });
+    })
+</script>
+
+@foreach (PostDTO item in Model)
+{
+    <div class="panel panel-default" style="background-color:#ffffff">
+        <div class="panel-heading baslik-panel">
+            <h2 style="color: #b94a48;" class="titleFontSize">
+                @item.TitleDto
+            </h2>
+            <p style="font-size: 13px;">
+                <span class="glyphicon glyphicon-user"></span> @item.UserDTO.NameDTO @item.UserDTO.SurnameDTO &nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-calendar"></span> @item.CreatedDateDto.Value.ToString("dd.MM.yyyy")  &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-eye-open leftDistance"></span> @item.ViewCountDto  &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-comment leftDistance"></span> @item.LikeCountDto  &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-th-list leftDistance"></span> @item.CategoryDTO.NameCategoryDto  &nbsp;&nbsp;&nbsp;&nbsp;
+            </p>
+        </div>
+        <div class="panel-body">
+            <article class="post" id="postArticle">
+                <section class="post-body text articleFontSize">
+                    @if (!string.IsNullOrEmpty(item.ContentDto) && item.ContentDto.Length > 400)
+                    {
+                        @Html.Raw(HttpUtility.HtmlDecode(item.ContentDto.Substring(0, 400) + "..."))
+                    }
+                    else
+                    {
+                        @Html.Raw(@HttpUtility.HtmlDecode(item.ContentDto))
+                    }
+                    <br />
+                    <br />
+                    <a class="btn btn-primary" style="font-size: 13px;" href="/Home/PostDetail/@item.SeolinkDto">Devamını Oku.. <span class="glyphicon glyphicon-chevron-right"></span></a>
+                </section>
+            </article>
+        </div>
+    </div>
+}
+
+@Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Home", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "divMakaleler" }))

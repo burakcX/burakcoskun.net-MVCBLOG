@@ -1,0 +1,66 @@
+﻿.back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+}
+
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.bcoskun-panel:hover {
+    color: #c09853;
+    background-color: #fcf8e3;
+    border-color: #fbeed5;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    box-shadow: 1px 1px 5px #888888;
+    background-color: #397db3;
+    border-color: #397db3;
+}
+
+
+.validation-summary-errors {
+    color: red;
+}
+
+/* Error message*/
+
+.lbl {
+    text-align: right;
+}
+
+.txt * {
+    width: 120px;
+    padding: 2px;
+    vertical-align: top;
+}
+
+.error {
+    border: 1px solid Red;
+    color: Red;
+}
+
+.valid {
+    border: 1px solid Green;
+}
+
+label.error {
+    color: Red;
+    border: 0px;
+}
+
+.dz-error-message {
+    width: auto !important;
+    margin-top: 20px;
+}
